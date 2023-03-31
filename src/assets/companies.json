@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "name": "teste",
+    "address": "teste",
+    "createdBy": "teste",
+    "createdDate": "2013-10-21T13:28:06.419Z",
+    "modifiedBy": "teste",
+    "phone": "teste",
+    "status": true
+  }
+]

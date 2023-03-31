@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
 
+import { AppMaterialModule } from '../shared/app-material/app-material.module';
+import { SharedModule } from '../shared/shared.module';
 import { CompaniesRoutingModule } from './companies-routing.module';
 import { CompaniesComponent } from './companies/companies.component';
 
@@ -13,7 +14,8 @@ import { CompaniesComponent } from './companies/companies.component';
   imports: [
     CommonModule,
     CompaniesRoutingModule,
-    MatTableModule
+    AppMaterialModule,
+    SharedModule
   ]
 })
 export class CompaniesModule { }

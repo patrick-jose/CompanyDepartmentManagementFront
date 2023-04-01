@@ -4,9 +4,9 @@
 </mat-toolbar>
 <mat-sidenav-container>
   <mat-sidenav style="background-color: #212121" [opened]="sidebarOpened">
-    <button mat-button class="button-sidenav" color="accent" routerLink="/companies">Companies</button>
-    <button mat-button class="button-sidenav" color="accent" routerLink="/departments">Departments</button>
-    <button mat-button class="button-sidenav" color="accent" routerLink="/employees">Employees</button>
+    <button mat-button class="button-sidenav" color="accent" routerLink="/companies" (click)="toggleSidebar()">Companies</button>
+    <button mat-button class="button-sidenav" color="accent" routerLink="/departments" (click)="toggleSidebar()">Departments</button>
+    <button mat-button class="button-sidenav" color="accent" routerLink="/employees" (click)="toggleSidebar()">Employees</button>
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>

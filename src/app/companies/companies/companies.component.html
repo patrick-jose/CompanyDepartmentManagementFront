@@ -1,11 +1,19 @@
 <mat-card>
-  <mat-toolbar color="accent"> Companies </mat-toolbar>
+  <mat-toolbar color="accent"> Companies
+    <div style="width: 100%;">
+      <button mat-mini-fab color="primary" aria-label="Add new company" style="float: right;">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
 
   <div *ngIf="companies$ | async as companies; else loading">
     <table mat-table [dataSource]="companies" class="mat-elevation-z8" color="secondary">
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        <td mat-cell *matCellDef="let element">
+          <a routerLink="/departments" style="color:black; font-weight: bold;">{{ element.name }}</a>
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="createdBy">
@@ -41,6 +49,19 @@
       <ng-container matColumnDef="phone">
         <th mat-header-cell *matHeaderCellDef>Phone</th>
         <td mat-cell *matCellDef="let element">{{ element.phone | phone }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef style="height: 56px;">
+
+        </mat-header-cell>
+
+        <mat-cell *matCellDef="let company" style="padding: 0px">
+          <button mat-icon-button color="primary" aria-label="Edit company">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-cell>
+
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -14,7 +14,7 @@ import { CompaniesService } from '../services/companies.service';
 export class CompaniesComponent {
 
   companies$: Observable<Company[]>;
-  displayedColumns = ['name', 'createdBy', 'createdDate', 'modifiedBy', 'modifiedDate', 'status', 'address', 'phone'];
+  displayedColumns = ['name', 'createdBy', 'createdDate', 'modifiedBy', 'modifiedDate', 'status', 'address', 'phone', 'actions'];
 
   constructor(
     private companiesService: CompaniesService,

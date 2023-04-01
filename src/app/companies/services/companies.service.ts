@@ -9,7 +9,7 @@ import { Company } from '../model/company';
 })
 export class CompaniesService {
 
-  private readonly API = '/assets/companies.json';
+  private readonly API = 'http://localhost:8080/api/companies';
 
   constructor(private httpClient: HttpClient) { }
 

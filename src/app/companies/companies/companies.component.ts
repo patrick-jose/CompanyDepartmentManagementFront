@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { catchError, Observable, of } from 'rxjs';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
@@ -11,10 +11,10 @@ import { CompaniesService } from '../services/companies.service';
   templateUrl: './companies.component.html',
   styleUrls: ['./companies.component.css']
 })
-export class CompaniesComponent implements OnInit {
+export class CompaniesComponent {
 
   companies$: Observable<Company[]>;
-  displayedColumns = ['name', 'createdBy', 'createdDate', 'modifiedBy', 'status', 'address', 'phone'];
+  displayedColumns = ['name', 'createdBy', 'createdDate', 'modifiedBy', 'modifiedDate', 'status', 'address', 'phone'];
 
   constructor(
     private companiesService: CompaniesService,
@@ -33,9 +33,4 @@ export class CompaniesComponent implements OnInit {
       data: errorMsg
     });
   }
-
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-
 }

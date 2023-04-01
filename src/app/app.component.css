@@ -1,0 +1,17 @@
+mat-sidenav-container {
+  height: calc(205vh - 115vh);
+}
+
+mat-sidenav {
+  width: 150px;
+}
+
+a:hover {
+  color: #FFE082;
+}
+
+.button-sidenav {
+  padding: 30px;
+  width: 150px;
+}
+

@@ -1,11 +1,13 @@
-export interface Company {
+export interface Employee {
   id: number;
   createdBy: string;
   createdDate: Date;
   modifiedBy: string;
   modifiedDate: Date;
   status: boolean;
-  address: string;
+  age: number;
   name: string;
-  phone: string;
+  email: string;
+  position: string;
+  surname: string
 }

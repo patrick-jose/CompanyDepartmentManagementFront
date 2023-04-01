@@ -1,4 +1,16 @@
 <mat-toolbar color="primary">
-  <span>Company Management</span>
+  <h1 style="padding: 25px 0px 0px 25px; margin: 0; font-size: 30px;">Company Management</h1>
 </mat-toolbar>
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+  <button mat-button color="accent" (click)="toggleSidebar()"><mat-icon style="margin: auto;">menu</mat-icon></button>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav style="background-color: #212121" [opened]="sidebarOpened">
+    <button mat-button class="button-sidenav" color="accent" routerLink="/companies">Companies</button>
+    <button mat-button class="button-sidenav" color="accent" routerLink="/departments">Departments</button>
+    <button mat-button class="button-sidenav" color="accent" routerLink="/employees">Employees</button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

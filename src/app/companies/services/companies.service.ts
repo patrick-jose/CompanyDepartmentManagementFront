@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { delay } from 'rxjs';
 
 import { Company } from '../model/company';
 
@@ -9,7 +8,7 @@ import { Company } from '../model/company';
 })
 export class CompaniesService {
 
-  private readonly API = 'http://localhost:8080/api/companies';
+  private readonly API = 'api/companies';
 
   constructor(private httpClient: HttpClient) { }
 

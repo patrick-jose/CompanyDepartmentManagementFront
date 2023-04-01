@@ -6,7 +6,6 @@ import { SharedModule } from '../shared/shared.module';
 import { CompaniesRoutingModule } from './companies-routing.module';
 import { CompaniesComponent } from './companies/companies.component';
 
-
 @NgModule({
   declarations: [
     CompaniesComponent

@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-toolbar color="accent"> Departments </mat-toolbar>
+  <mat-toolbar color="accent" style="font-size: 25px;"> Departments </mat-toolbar>
 
   <div *ngIf="departments$ | async as departments; else loading">
     <table mat-table [dataSource]="departments" class="mat-elevation-z8" color="secondary">

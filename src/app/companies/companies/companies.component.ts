@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
@@ -18,8 +19,10 @@ export class CompaniesComponent {
 
   constructor(
     private companiesService: CompaniesService,
+    private router: Router,
+    private route: ActivatedRoute,
     public dialog: MatDialog
-    ) {
+  ) {
       this.companies$ = this.companiesService.list().pipe(
         catchError(error => {
           this.onError('Error on loading companies');
@@ -27,6 +30,14 @@ export class CompaniesComponent {
         })
       );
     }
+
+  onAdd() {
+    this.router.navigate(['new'], { relativeTo: this.route });
+  }
+
+  showDepartments() {
+    this.router.navigate(['departments'], { relativeTo: this.route });
+  }
 
   onError(errorMsg: string) {
     this.dialog.open(ErrorDialogComponent, {

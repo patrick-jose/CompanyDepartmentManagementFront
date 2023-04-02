@@ -9,5 +9,6 @@ export interface Employee {
   name: string;
   email: string;
   position: string;
-  surname: string
+  surname: string;
+  idDepartment: number;
 }

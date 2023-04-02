@@ -13,3 +13,7 @@ table {
 .mat-mdc-card {
   padding: 25px;
 }
+
+.min-width {
+  min-width: 1080px;
+}

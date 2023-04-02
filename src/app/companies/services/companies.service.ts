@@ -15,4 +15,8 @@ export class CompaniesService {
   list() {
     return this.httpClient.get<Company[]>(this.API);
   }
+
+  save(record: Company) {
+    return this.httpClient.post<Company>(this.API, record);
+  }
 }

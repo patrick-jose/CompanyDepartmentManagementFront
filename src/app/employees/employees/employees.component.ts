@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
@@ -13,11 +14,13 @@ import { EmployeesService } from '../services/employees.service';
 })
 export class EmployeesComponent {
   employees$: Observable<Employee[]>;
-  displayedColumns = ['surname', 'name', 'createdBy', 'createdDate', 'modifiedBy', 'modifiedDate', 'status', 'age', 'email', 'position'];
+  displayedColumns = ['surname', 'name', 'createdBy', 'createdDate', 'modifiedBy', 'modifiedDate', 'status', 'age', 'email', 'position', 'actions'];
 
   constructor(
     private employeesService: EmployeesService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute
     ) {
       this.employees$ = this.employeesService.list().pipe(
         catchError(error => {
@@ -31,5 +34,13 @@ export class EmployeesComponent {
     this.dialog.open(ErrorDialogComponent, {
       data: errorMsg
     });
+  }
+
+  onAdd() {
+    this.router.navigate(['employees/new']);
+  }
+
+  showDepartments() {
+    this.router.navigate(['departments'], { relativeTo: this.route });
   }
 }

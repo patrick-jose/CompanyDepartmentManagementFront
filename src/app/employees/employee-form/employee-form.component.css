@@ -1,0 +1,99 @@
+.card-title {
+  font-size: 30px !important;
+  margin: 10px;
+  color: #FFE082;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.from-input {
+  padding: 0px 1% 50px 1%;
+  margin: auto;
+}
+
+.from-input.name{
+  width: 39%;
+  padding: 80px 1% 50px 1%;
+}
+.from-input.surname{
+  width: 25%;
+}
+
+.from-input.email {
+  width: 29%;
+}
+
+.from-input.department {
+  width: 30%;
+}
+
+.from-input.position {
+  width: 30%;
+}
+
+.from-input.age {
+  width: 120px;
+}
+
+@media only screen and (max-width: 1067px) {
+  .from-input.name{
+    width: 48%;
+    padding: 80px 1% 50px 1%;
+  }
+  .from-input.surname{
+    width: 48%;
+  }
+
+  .from-input.email {
+    width: 65%;
+  }
+
+  .from-input.department {
+    width: 48%;
+  }
+
+  .from-input.position {
+    width: 48%;
+  }
+
+  .from-input.age {
+    width: 120px;
+    float: right;
+  }
+}
+
+@media only screen and (max-width: 524px) {
+  .from-input.name{
+    width: 98%;
+    padding: 80px 1% 50px 1%;
+  }
+  .from-input.surname{
+    width: 98%;
+  }
+
+  .from-input.email {
+    width: 98%;
+  }
+
+  .from-input.department {
+    width: 98%;
+  }
+
+  .from-input.position {
+    width: 98%;
+  }
+
+  .from-input.age {
+    width: 120px;
+    float: left;
+  }
+}
+
+.action-button {
+  margin:10px
+}
+
+.min-width {
+  width: 100%;
+  min-width: 150px;
+}

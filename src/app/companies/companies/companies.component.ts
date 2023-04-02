@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
@@ -12,7 +12,7 @@ import { CompaniesService } from '../services/companies.service';
   templateUrl: './companies.component.html',
   styleUrls: ['./companies.component.css']
 })
-export class CompaniesComponent {
+export class CompaniesComponent implements OnInit {
 
   companies$: Observable<Company[]>;
   displayedColumns = ['name', 'createdBy', 'createdDate', 'modifiedBy', 'modifiedDate', 'status', 'address', 'phone', 'actions'];
@@ -23,20 +23,24 @@ export class CompaniesComponent {
     private route: ActivatedRoute,
     public dialog: MatDialog
   ) {
-      this.companies$ = this.companiesService.list().pipe(
-        catchError(error => {
-          this.onError('Error on loading companies');
-          return of([]);
-        })
-      );
+      this.companies$ = new Observable;
     }
+
+  ngOnInit(): void {
+    this.companies$ = this.companiesService.list().pipe(
+      catchError(error => {
+        this.onError('Error on loading companies');
+        return of([]);
+      })
+    );
+  }
 
   onAdd() {
     this.router.navigate(['new'], { relativeTo: this.route });
   }
 
-  showDepartments() {
-    this.router.navigate(['departments'], { relativeTo: this.route });
+  showDepartments(companyId: number) {
+    this.router.navigate(['departments', companyId], { relativeTo: this.route });
   }
 
   onError(errorMsg: string) {

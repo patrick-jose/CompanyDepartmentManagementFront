@@ -1,3 +1,5 @@
+import { Company } from "src/app/companies/model/company";
+
 export interface Department {
   id: number;
   createdBy: string;
@@ -8,5 +10,5 @@ export interface Department {
   description: string;
   name: string;
   phone: string;
-  id_company: number;
+  company: Company;
 }

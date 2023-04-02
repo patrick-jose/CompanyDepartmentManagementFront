@@ -1,5 +1,11 @@
-<mat-card>
-  <mat-toolbar color="accent" style="font-size: 25px;"> Departments </mat-toolbar>
+<mat-card style="height: 100%;" class="min-width">
+  <mat-toolbar color="accent" style="font-size: 25px;"> EMPLOYEES
+    <div style="width: 100%;">
+      <button mat-mini-fab color="primary" (click)="onAdd()" aria-label="Add new company" style="float: right;">
+        <mat-icon>person_add</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
 
   <div *ngIf="employees$ | async as employees; else loading">
     <table mat-table [dataSource]="employees" class="mat-elevation-z8" color="secondary">
@@ -51,6 +57,15 @@
       <ng-container matColumnDef="position">
         <th mat-header-cell *matHeaderCellDef>Position</th>
         <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef style="height: 56px;"></mat-header-cell>
+        <mat-cell *matCellDef="let employee" style="padding: 0px">
+          <button mat-icon-button color="primary" aria-label="Edit employee">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-cell>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

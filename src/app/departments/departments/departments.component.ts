@@ -56,8 +56,8 @@ export class DepartmentsComponent implements OnDestroy {
     this.router.navigate(['departments/new']);
   }
 
-  showEmployees() {
-    this.router.navigate(['departments/employees']);
+  showEmployees(departmentId: number) {
+    this.router.navigate(['departments/employees/' + departmentId]);
   }
 
   ngOnDestroy() {

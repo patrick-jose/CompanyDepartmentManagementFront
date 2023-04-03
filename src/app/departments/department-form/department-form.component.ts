@@ -1,14 +1,15 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
 import { Company } from 'src/app/companies/model/company';
 import { CompaniesService } from 'src/app/companies/services/companies.service';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
-import { DepartmentsService } from '../services/departments.service';
+
 import { Department } from '../model/department';
+import { DepartmentsService } from '../services/departments.service';
 
 @Component({
   selector: 'app-department-form',
@@ -16,7 +17,6 @@ import { Department } from '../model/department';
   styleUrls: ['./department-form.component.css']
 })
 export class DepartmentFormComponent implements OnInit {
-
   form: FormGroup;
   selectedCompany: string;
   companies$: Observable<Company[]>;
@@ -25,7 +25,7 @@ export class DepartmentFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
+    private location: Location,
     private companiesService: CompaniesService,
     public dialog: MatDialog,
     private snackBar: MatSnackBar,
@@ -80,28 +80,32 @@ export class DepartmentFormComponent implements OnInit {
     }
 
     if (this.form.value.name == null || this.form.value.name == '') {
-      this.snackBar.open('You must enter the name of the company', 'Close', { duration: 5000 });
+      this.snackBar.open('You must enter the name of the department', 'Close', { duration: 5000 });
+      this.progress = false;
+    }
+    else if (this.selectedCompany == null || this.selectedCompany == '') {
+      this.snackBar.open('You must choose the company', 'Close', { duration: 5000 });
       this.progress = false;
     }
     else {
       this.service.save(department)
-        .subscribe(
-          result => {
+        .subscribe({
+          complete: () => {
             this.progress = false;
             this.snackBar.open('Department added', 'Close', { duration: 5000 });
             this.onDiscard();
           },
-          error => {
+          error: error => {
             console.log(error);
             this.snackBar.open('Error on saving department', 'Close', { duration: 5000 });
             this.progress = false;
-          }
-        );
+          },
+        });
     }
   }
 
   onDiscard() {
-    this.router.navigate(['departments']);
+    this.location.back();
   }
 
   onError(errorMsg: string) {

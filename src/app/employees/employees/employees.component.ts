@@ -14,20 +14,36 @@ import { EmployeesService } from '../services/employees.service';
 })
 export class EmployeesComponent {
   employees$: Observable<Employee[]>;
-  displayedColumns = ['surname', 'name', 'createdBy', 'createdDate', 'modifiedBy', 'modifiedDate', 'status', 'age', 'email', 'position', 'actions'];
+  departmentId: number = 0;
+  sub: any;
+  displayedColumns = ['name', 'createdBy', 'createdDate', 'modifiedBy', 'modifiedDate', 'status', 'age', 'email', 'position', 'surname', 'actions'];
 
   constructor(
     private employeesService: EmployeesService,
-    public dialog: MatDialog,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public dialog: MatDialog
     ) {
-      this.employees$ = this.employeesService.list().pipe(
-        catchError(error => {
-          this.onError('Error on loading departments');
-          return of([]);
-        })
-      );
+        this.sub = this.route.params.subscribe(params => {
+        this.departmentId = +params['departmentId'];
+      });
+
+      if (this.departmentId == 0 || this.departmentId == null) {
+        this.employees$ = this.employeesService.list().pipe(
+          catchError(error => {
+            this.onError('Error on loading employees');
+            return of([]);
+          })
+        );
+      }
+      else {
+        this.employees$ = this.employeesService.listByDepartmentId(this.departmentId).pipe(
+          catchError(error => {
+            this.onError('Error on loading employees');
+            return of([]);
+          })
+        );
+      }
     }
 
   onError(errorMsg: string) {
@@ -40,7 +56,7 @@ export class EmployeesComponent {
     this.router.navigate(['employees/new']);
   }
 
-  showDepartments() {
-    this.router.navigate(['departments'], { relativeTo: this.route });
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }

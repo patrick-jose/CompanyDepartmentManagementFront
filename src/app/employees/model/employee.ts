@@ -1,3 +1,5 @@
+import { Department } from "src/app/departments/model/department";
+
 export interface Employee {
   id: number;
   createdBy: string;
@@ -10,5 +12,5 @@ export interface Employee {
   email: string;
   position: string;
   surname: string;
-  idDepartment: number;
+  department: Department;
 }

@@ -12,11 +12,16 @@
 }
 
 .from-input.name{
-  width: 39%;
+  width: 19%;
   padding: 80px 1% 50px 1%;
 }
+
+.from-input.company{
+  width: 29%;
+}
+
 .from-input.surname{
-  width: 25%;
+  width: 15%;
 }
 
 .from-input.email {
@@ -24,7 +29,7 @@
 }
 
 .from-input.department {
-  width: 30%;
+  width: 29%;
 }
 
 .from-input.position {

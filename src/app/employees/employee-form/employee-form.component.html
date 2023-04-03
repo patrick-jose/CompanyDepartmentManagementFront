@@ -11,9 +11,19 @@
         <input matInput formControlName="surname" placeholder="Surname">
         <mat-icon matSuffix style="color: #FFD54F;">supervisor_account</mat-icon>
       </mat-form-field>
+      <mat-form-field color="accent" class="from-input company">
+        <mat-label>Company</mat-label>
+        <mat-select required (selectionChange)="onCompanyChange()" [(ngModel)]="selectedCompany" name="company" [ngModelOptions]="{standalone: true}">
+          <mat-option *ngFor="let company of companies" [value]="company.id">
+            {{company.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error color="warn">You must enter a company</mat-error>
+        <mat-icon matSuffix style="color: #FFD54F;">apartment</mat-icon>
+      </mat-form-field>
       <mat-form-field color="accent" class="from-input department">
         <mat-label>Department</mat-label>
-        <mat-select required>
+        <mat-select required [(ngModel)]="selectedDepartment" name="department" [ngModelOptions]="{standalone: true}">
           <mat-option *ngFor="let department of departments" [value]="department.id">
             {{department.name}}
           </mat-option>

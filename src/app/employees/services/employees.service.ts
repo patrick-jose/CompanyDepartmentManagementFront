@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Employee } from '../model/employee';
-import { Department } from 'src/app/departments/model/department';
+import { DepartmentEmployee } from '../model/departmentEmployee';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,13 @@ export class EmployeesService {
     return this.httpClient.get<Employee[]>(this.API);
   }
 
-  save(record: Employee, department: Department) {
-    return this.httpClient.post<Employee>(this.API, {record, department});
+  listByDepartmentId(index: number) {
+    if (Number.isNaN(index))
+      index = 0;
+    return this.httpClient.get<Employee[]>(this.API + '?departmentId=' + index);
+  }
+
+  save(record: DepartmentEmployee) {
+    return this.httpClient.post<Employee>(this.API, record);
   }
 }

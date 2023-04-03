@@ -1,8 +1,10 @@
-import { Department } from 'src/app/departments/model/department';
-
-import { Employee } from './employee';
-
 export interface DepartmentEmployee {
-  employee: Employee,
-  department: Department
+  id: number;
+  createdBy: string;
+  createdDate: Date;
+  modifiedBy: string;
+  modifiedDate: Date;
+  status: boolean;
+  idDepartment: number;
+  idEmployee: number;
 }

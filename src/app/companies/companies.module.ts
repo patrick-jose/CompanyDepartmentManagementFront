@@ -7,11 +7,13 @@ import { SharedModule } from '../shared/shared.module';
 import { CompaniesRoutingModule } from './companies-routing.module';
 import { CompaniesComponent } from './companies/companies.component';
 import { CompanyFormComponent } from './company-form/company-form.component';
+import { CompanyFormEditComponent } from './company-form-edit/company-form-edit.component';
 
 @NgModule({
   declarations: [
     CompaniesComponent,
-    CompanyFormComponent
+    CompanyFormComponent,
+    CompanyFormEditComponent
   ],
   imports: [
     CommonModule,

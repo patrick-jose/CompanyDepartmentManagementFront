@@ -1,0 +1,32 @@
+<mat-card style="width: 80%; margin: auto; margin-top: 50px;">
+  <mat-toolbar color="primary" style="font-size: 25px; font-style: italic;">EDIT DEPARTMENT</mat-toolbar>
+  <mat-card-content style="text-align: center;">
+    <form [formGroup]="form">
+      <mat-form-field color="accent" class="from-input name">
+        <input matInput formControlName="name" placeholder="Name" required>
+        <mat-icon matSuffix style="color: #FFD54F;">meeting_room</mat-icon>
+        <mat-error color="warn">You must enter a name</mat-error>
+      </mat-form-field>
+      <mat-form-field color="accent" class="from-input phone">
+        <input matInput formControlName="phone" color="accent" placeholder="Phone">
+        <mat-icon matSuffix style="color: #FFD54F;">phone</mat-icon>
+      </mat-form-field>
+      <p>
+        <mat-form-field color="accent" class="from-input description">
+          <textarea matInput formControlName="description" placeholder="Description" style="min-height: 200px;"></textarea>
+          <mat-icon matSuffix style="color: #FFD54F;">description</mat-icon>
+        </mat-form-field>
+      </p>
+      <mat-slide-toggle formControlName="status" [(ngModel)]="isActive">Active</mat-slide-toggle>
+    </form>
+  </mat-card-content>
+  <mat-card-actions style="text-align: right;">
+    <div style="width: 100%; text-align: right;">
+      <button mat-raised-button color="primary" class="action-button" (click)="onDiscard()">DISCARD</button>
+      <button mat-raised-button color="accent" class="action-button" (click)="onSubmit()">SAVE</button>
+    </div>
+  </mat-card-actions>
+  <mat-card-footer>
+    <mat-progress-bar mode="indeterminate" color="accent" *ngIf="progress"></mat-progress-bar>
+  </mat-card-footer>
+</mat-card>

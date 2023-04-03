@@ -7,12 +7,14 @@ import { SharedModule } from '../shared/shared.module';
 import { DepartmentsRoutingModule } from './departments-routing.module';
 import { DepartmentsComponent } from './departments/departments.component';
 import { DepartmentFormComponent } from './department-form/department-form.component';
+import { DepartmentFormEditComponent } from './department-form-edit/department-form-edit.component';
 
 
 @NgModule({
   declarations: [
     DepartmentsComponent,
-    DepartmentFormComponent
+    DepartmentFormComponent,
+    DepartmentFormEditComponent
   ],
   imports: [
     CommonModule,

@@ -16,7 +16,7 @@ export class EmployeesComponent {
   employees$: Observable<Employee[]>;
   departmentId: number = 0;
   sub: any;
-  displayedColumns = ['name', 'createdBy', 'createdDate', 'modifiedBy', 'modifiedDate', 'status', 'age', 'email', 'position', 'surname', 'actions'];
+  readonly displayedColumns = ['name', 'createdBy', 'createdDate', 'modifiedBy', 'modifiedDate', 'status', 'age', 'email', 'position', 'surname', 'actions'];
 
   constructor(
     private employeesService: EmployeesService,
@@ -58,5 +58,9 @@ export class EmployeesComponent {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  editEmployee(employee: Employee) {
+    this.router.navigate(['employees/edit', employee.id]);
   }
 }

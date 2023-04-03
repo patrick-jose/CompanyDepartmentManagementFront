@@ -7,12 +7,14 @@ import { SharedModule } from '../shared/shared.module';
 import { EmployeesRoutingModule } from './employees-routing.module';
 import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
+import { EmployeeFormEditComponent } from './employee-form-edit/employee-form-edit.component';
 
 
 @NgModule({
   declarations: [
     EmployeesComponent,
-    EmployeeFormComponent
+    EmployeeFormComponent,
+    EmployeeFormEditComponent
   ],
   imports: [
     CommonModule,

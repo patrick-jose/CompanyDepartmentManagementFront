@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
@@ -13,9 +13,9 @@ import { CompaniesService } from '../services/companies.service';
   styleUrls: ['./companies.component.css']
 })
 export class CompaniesComponent implements OnInit {
-
   companies$: Observable<Company[]>;
-  displayedColumns = ['name', 'createdBy', 'createdDate', 'modifiedBy', 'modifiedDate', 'status', 'address', 'phone', 'actions'];
+  readonly displayedColumns = ['name', 'createdBy', 'createdDate', 'modifiedBy', 'modifiedDate', 'status', 'address', 'phone', 'actions'];
+  @Output() edit = new EventEmitter(false);
 
   constructor(
     private companiesService: CompaniesService,
@@ -47,5 +47,9 @@ export class CompaniesComponent implements OnInit {
     this.dialog.open(ErrorDialogComponent, {
       data: errorMsg
     });
+  }
+
+  editCompany(company: Company) {
+    this.router.navigate(['edit', company.id], { relativeTo: this.route });
   }
 }

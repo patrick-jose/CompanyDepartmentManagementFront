@@ -16,7 +16,7 @@ export class DepartmentsComponent implements OnDestroy {
   departments$: Observable<Department[]>;
   companyId: number = 0;
   sub: any;
-  displayedColumns = ['name', 'createdBy', 'createdDate', 'modifiedBy', 'modifiedDate', 'status', 'description', 'phone', 'actions'];
+  readonly displayedColumns = ['name', 'createdBy', 'createdDate', 'modifiedBy', 'modifiedDate', 'status', 'description', 'phone', 'actions'];
 
   constructor(
     private departmentsService: DepartmentsService,
@@ -62,5 +62,9 @@ export class DepartmentsComponent implements OnDestroy {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  editDepartment(department: Department) {
+    this.router.navigate(['departments/edit', department.id]);
   }
 }

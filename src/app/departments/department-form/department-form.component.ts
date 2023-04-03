@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, Observable, of } from 'rxjs';
@@ -31,9 +31,9 @@ export class DepartmentFormComponent implements OnInit {
     private snackBar: MatSnackBar,
     private service: DepartmentsService) {
     this.form = this.formBuilder.group({
-      name: [null],
-      description: [null],
-      phone: [null]
+      name: new FormControl<string>(''),
+      description: new FormControl<string>(''),
+      phone: new FormControl<string>('')
     });
     this.selectedCompany = '';
 
@@ -79,7 +79,7 @@ export class DepartmentFormComponent implements OnInit {
       company: company
     }
 
-    if (this.form.value.name == null || this.form.value.name == '') {
+    if (this.form.value.name == '') {
       this.snackBar.open('You must enter the name of the department', 'Close', { duration: 5000 });
       this.progress = false;
     }

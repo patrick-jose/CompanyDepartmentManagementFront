@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { CompaniesService } from '../services/companies.service';
@@ -11,7 +11,6 @@ import { CompaniesService } from '../services/companies.service';
   styleUrls: ['./company-form.component.css']
 })
 export class CompanyFormComponent {
-
   form: FormGroup;
   progress: boolean;
 
@@ -22,14 +21,14 @@ export class CompanyFormComponent {
     private location: Location
   ) {
     this.form = this.formBuilder.group({
-      name: [null],
-      address: [null],
-      phone: [null],
-      createdBy: [null],
-      createdDate: [null],
-      modifiedBy: [null],
-      status: [null],
-      modifiedDate: [null]
+      name: new FormControl<string>(''),
+      address: new FormControl<string>(''),
+      phone: new FormControl<string>(''),
+      createdBy: new FormControl<string>(''),
+      createdDate: new FormControl<Date>(new Date()),
+      modifiedBy: new FormControl<string>(''),
+      status: new FormControl<boolean>(true),
+      modifiedDate: new FormControl<Date>(new Date())
     });
     this.progress = false;
   }
@@ -38,10 +37,7 @@ export class CompanyFormComponent {
     this.progress = true;
 
     this.form.value.createdBy = 'Patrick'; // TODO: get user from login
-    this.form.value.createdDate = new Date();
     this.form.value.modifiedBy = 'Patrick'; // TODO: get user from login
-    this.form.value.status = true;
-    this.form.value.modifiedDate = new Date();
 
     if (this.form.value.name == null || this.form.value.name == '') {
       this.snackBar.open('You must enter the name of the company', 'Close', { duration: 5000 });
@@ -49,18 +45,18 @@ export class CompanyFormComponent {
     }
     else {
       this.service.save(this.form.value)
-        .subscribe(
-          result => {
+        .subscribe({
+          complete: () => {
             this.progress = false;
             this.snackBar.open('Company added', 'Close', { duration: 5000 });
             this.onDiscard();
           },
-          error => {
+          error: (error) => {
             console.log(error);
             this.snackBar.open('Error on saving company', 'Close', { duration: 5000 });
             this.progress = false;
           }
-        );
+      });
     }
   }
 

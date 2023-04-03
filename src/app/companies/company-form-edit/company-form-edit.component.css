@@ -1,0 +1,48 @@
+.card-title {
+  font-size: 30px !important;
+  margin: 10px;
+  color: #FFE082;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.from-input {
+  padding: 0px 1% 50px 1%;
+  margin: auto;
+}
+
+.from-input.name{
+  width: 500px;
+  padding: 80px 1% 50px 1%;
+}
+
+.from-input.address {
+  width: 800px;
+}
+
+.from-input.phone {
+  width: 300px;
+}
+
+@media only screen and (max-width: 1067px) {
+  .from-input.name{
+    width: 98%;
+  }
+
+  .from-input.address {
+    width: 98%;
+  }
+
+  .from-input.phone {
+    width: 98%;
+  }
+}
+
+.action-button {
+  margin:10px
+}
+
+.min-width {
+  width: 100%;
+  min-width: 150px;
+}

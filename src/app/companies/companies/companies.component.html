@@ -54,7 +54,7 @@
       <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef style="height: 56px;"></mat-header-cell>
         <mat-cell *matCellDef="let company" style="padding: 0px">
-          <button mat-icon-button color="primary" aria-label="Edit company">
+          <button mat-icon-button color="primary" aria-label="Edit company" (click)="editCompany(company)">
             <mat-icon>edit</mat-icon>
           </button>
         </mat-cell>

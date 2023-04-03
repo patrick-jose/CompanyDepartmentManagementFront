@@ -17,6 +17,8 @@ export class DepartmentsService {
   }
 
   listByCompanyId(index: number) {
+    if (Number.isNaN(index))
+      index = 0;
     return this.httpClient.get<Department[]>(this.API + '?companyId=' + index);
   }
 
